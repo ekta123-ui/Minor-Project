@@ -1,0 +1,74 @@
+@import "tailwindcss";
+/* ===== Floating Circle Animation ===== */
+@keyframes floatCircle {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.circle-video {
+  animation: floatCircle 5s ease-in-out infinite;
+}
+
+/* ===== Particle Background ===== */
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.particles::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(#38bdf8 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.05;
+  animation: moveParticles 40s linear infinite;
+}
+
+@keyframes moveParticles {
+  from { transform: translateY(0); }
+  to { transform: translateY(-400px); }
+}
+/* ===== Fade In Up Animation ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* ===== Slow Glow Pulse ===== */
+@keyframes pulseSlow {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
+
+.animate-pulseSlow {
+  animation: pulseSlow 6s ease-in-out infinite;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.8s ease-out;
+}

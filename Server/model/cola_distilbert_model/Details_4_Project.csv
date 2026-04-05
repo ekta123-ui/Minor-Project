@@ -1,0 +1,87 @@
+teacher_id,teacher_name,school_id,department_id,course_id,designation,email,phone,gender,domain,block,coordinatorship
+1001,Dr. Pankaj Agarwal ,1,1,1,Examination Coordinator,dean.soet@krmangalam.edu.in,8615377439,Male,CSE,B,NAAC Coordinator
+1002,Dr. Shweta Bansal,1,1,7,Assistant Professor (Senior Scale),shweta.bansal@krmangalam.edu.in,8615377439,Female,CSE,B,Examination Coordinator
+1003,Dr. Aman Jatain,1,1,20,Program Coordinator,aman.jatain@krmangalam.edu.in,8615377439,Female,CSE,B,Program Coordinator
+1004,Dr. Meenu,1,1,3,Assistant Professor (Senior Scale),meenu@krmangalam.edu.in,8615377439,Female,CSE,B,Internship Coordinator
+1005,Dr. Swati Gupta,1,1,11,Examination Coordinator,swati@krmangalam.edu.in,8615377439,Female,CSE,B,Internship Coordinator
+1006,Dr. Anshu,1,1,9,Senior Lab Assistant,anshu@krmangalam.edu.in,8615377439,Female,CSE,B,Internship/Training & Placement coordinator
+1007,Dr. Amar Saraswat,1,1,17,Professor,amar.saraswat@krmangalam.edu.in,8615377439,Male,CSE,B,Discipline Coordinator
+1008,Ms. Jyoti Kataria,1,1,10,Assistant Professor (Senior Scale),jyoti.kataria@krmangalam.edu.in,8615377439,Female,CSE,B,Project Coordinator
+1009,Ms.Suman ,1,1,14,Examination Coordinator,suman@krmangalam.edu.in,8615377439,Female ,CSE ,B,Examination Coordinator
+1010,Dr. Vandna Batra,1,1,8,Professor,vandna.batra@krmangalam.edu.in,8615377439,Female ,CSE,B,Timetable Coordinator
+1011,Ms. Ruchika Bhakhar,1,1,14,Associate Professor,Ruchika.bhakhar@krmangalam.edu.in,8615377439,Female,CSE,B,Time Table Coordinator
+1012,Dr. Saneh Lata Yadav,1,1,9,Assistant Professor,sanehlata.yadav@krmangalam.edu.in,8615377439,Female,CSE,B,Internship Coordinator
+1013,Dr. Surabhi Shanker,1,1,1,Professor,surabhi.shanker@krmangalam.edu.in,8615377439,Female,CSE,B,Training & Placement Coordinator
+1014,Dr. Preeti Rathi,1,1,2,Assistant Professor (Senior Scale),preeti.rathi@krmangalam.edu.in,8615377439,Female,CSE,B,Training & Placement Coordinator
+1015,Ms. Neetu Chauhan,1,1,10,Assistant Professor,neetu.chauhan@krmangalam.edu.in,8615377439,Female,CSE,D,Discipline Coordinator
+1016,Ms. Lucky Verma,1,1,18,Examination Coordinator,lucky.verma@krmangalam.edu.in,8615377439,Female,CSE,B,Project Coordinator
+1017,Dr. Yogita Yashveer Raghav,1,1,19,Professor,yogita.raghav@krmangalam.edu.in,8615377439,Female,CSE,B,School Event (ELC) Coordinator 
+1018,Ms. Rishika Mehta,1,1,18,Assistant Professor (Senior Scale),rishika.mehta@krmangalam.edu.in,8615377439,Female,CSE,B,Alumni Coordinator
+1019,Ms. Mansi kajal,1,1,4,Technical Assistant,mansi.kajal@krmangalam.edu.in,8615377439,Female,CSE,B,Timetable Coordinator
+1020,Dr. Reenu ,1,1,18,Program Coordinator,reenubatra1988@gmail.com,8615377439,Female,CSE,B,Internship Coordinator
+1021,Ms.Megha Sharma,1,1,8,Assistant Professor,sharmamegha027@gmail.com,8615377439,Female,CSE,B,Research Coordinator
+1022,Dr. Aarti,1,1,20,Examination Coordinator,aarti.sangwan@krmangalam.edu.in,8615377439,Female,CSE,B,Discipline Coordinator
+1023,Ms. Kriti Sharma,1,1,7,Technical Assistant,kriti.s@krmangalam.edu.in,8615377439,Female,CSE,B,Prism e-magazine
+1024,Dr. Manish Kumar,1,1,13,Program Coordinator,manish@krmangalam.edu.in,8615377439,Male,CSE,B,Program Coordinator
+1025,Dr. Ravinder Beniwal,1,1,3,Professor,ravinder.beniwal@krmangalam.edu.in,8615377439,Male,CSE,B,NAAC Coordinator
+1026,Dr. Monika Khatkar ,1,1,3,Technical Assistant,monika.khatkar@krmangalam.edu.in,8615377439,Female,CSE,B,School Placement Coordinator
+1027,Dr. Shahjad,1,1,20,Assistant Professor,shahjad@krmangalam.edu.in,8615377439,Male,CSE,B,Library Coordinator
+1028,Mr. Vishwanil Suman ,1,1,20,Assistant Professor (Senior Scale),vishwanil.suman@krmangalam.edu.in,8615377439,Male,CSE,B,NAAC Coordinator
+1029,Mr. Mohammad Aijaz,1,1,17,Examination Coordinator,mohammad.aijaz@krmangalam.edu.in,8615377439,Male,CSE,B,Discipline Coordinator
+1030,Mr. Deepak Kaushik,1,1,3,Lab Assistant,deepak.kaushik@krmangalam.edu.in,8615377439,Male,CSE,B,Examination Coordinator
+1031,Ms. Jyoti Kaurav,1,1,17,Assistant Professor (Senior Scale),jyoti.kaurav@krmangalam.edu.in,8615377439,Female,CSE,B,Internship Coordinator
+1032,Ms. Ritu Devi,1,1,7,Project Coordinator,ritu.rani@krmangalam.edu.in,8615377439,Female,CSE,B,Internship Coordinator
+1033,Ms. Jyoti Yadav,1,1,9,Project Coordinator,jyoti.yadav@krmangalam.edu.in,8615377439,Female,CSE,B,Training & Placement Coordinator
+1034,Mr. Rajesh Kumar,1,1,19,Program Coordinator,rajesh.badrana@krmangalam.edu.in,8615377439,Male,CSE,D,Examination Coordinator
+1035,Ms. Iflah Aijaz,1,1,19,Professor,"iflah.aijaz@krmangalam.edu,in",8615377439,Female,CSE,B,Program Coordinator
+1036,Dr. Sameer Farooq,1,1,6,Professor,sameer.farooq@krmangalam.edu.in,8615377439,Male,CSE,B,Examination Coordinator
+1037,Dr. Feroz Ahmed,1,1,1,Assistant Professor (Senior Scale),feroz.ahmed@krmangalam.edu.in,8615377439,Male,CSE,D,Training & Placement Coordinator
+1038,Dr. Rupendra Pratap Singh,1,1,10,Assistant Professor (Senior Scale),rupendrapratap.singhhada@krmangalam.edu.in,8615377439,Male,CSE,B,Research Coordinator
+1039,Ms. Swati Jain Kansal,1,1,15,Program Coordinator,swati.jain@krmangalam.edu.in,8615377439,Female,CSE,B,NAAC Coordinator
+1040,Ms. Neha kaushik,1,1,13,Professor,neha.kaushik@krmangalam.edu.in,8615377439,Female,CSE,B,NAAC Coordinator
+1041,MS. Alina Banerjee,1,1,14,Technical Assistant,alina.banerjee@krmangalam.edu.in,8615377439,Female,CSE,D,Research Coordinator
+1042,Mr. Aryan Sharma,1,1,19,Assistant Professor (Senior Scale),aryan.sharma@krmangalam.edu.in,8615377439,Male,CSE,B,Project Coordinator
+1043,Ms. Megha,1,1,9,Examination Coordinator,megha@krmangalam.edu.in,8615377439,Female,CSE,B,Program Coordinator
+1044,Dr. Satinder Pal Singh,1,1,2,Associate Professor,satinder.palsingh@krmangalam.edu.in,8615377439,Male ,CSE,D,Discipline Coordinator
+1045,Dr. Shahid Ahmad Wani,1,1,12,Program Coordinator,shahidahmad.wani@krmangalam.edu.in,8615377439,Male ,CSE,D,Research Coordinator
+1046,Mr. Anurag Singh,1,1,4,Assistant Professor,anurag.singh@krmangalam.edu.in,8615377439,Male ,CSE,B,Program Coordinator
+1047,Ms Ruchi Sharma,1,1,12,Project Coordinator,Ruchi.soet@krmangalam.edu.in,8615377439,Female,CSE,B,Program Coordinator
+1048,Mr. Akash Tiwari,1,1,17,Professor,Akash.t@krmangalam.edu.in,8615377439,Male,CSE,D,Examination Coordinator
+1049,Ms. Santosh Rani,1,1,15,Professor,santosh.rani@krmangalam.edu.in,8615377439,Female,CSE,B,Discipline Coordinator
+1050,Dr. Shweta Agarwal,1,1,15,Senior Lab Assistant,shweta.agarwal@krmangalam.edu.in,8615377439,Female,CSE,B,Training & Placement Coordinator
+1051,Madhu Yadav,1,1,4,Senior Lab Assistant,madhu.yadav@krmangalam.edu.in,8615377439,Female,CSE,B,Event Coordinator
+1052,Himanshi,1,1,4,Assistant Professor (Senior Scale),himanshi.yadav@krmangalam.edu.in,8615377439,Female,CSE,B,Research Coordinator
+1053,Himanshu Yadav,1,1,3,Associate Professor,himanshu.yadav44krmangalam.edu.in,8615377439,Male ,CSE,B,Internship Coordinator
+1054,Aditya,1,1,16,Lab Assistant,aditya41krmangalam.edu.in,8615377439,Male ,CSE,B,NAAC Coordinator
+1055,Anoja,1,1,1,Project Coordinator,anoja34krmangalam.edu.in,8615377439,Male ,CSE,B,Discipline Coordinator
+1056,Ishu,1,1,19,Professor,ishu85krmangalam.edu.in,8615377439,Male ,CSE,B,Project Coordinator
+1057,Ms. Priyanka Chaneja,1,1,19,Associate Professor,ms..priyanka.chaneja19krmangalam.edu.in,8615377439,Female,CSE,B,Discipline Coordinator
+1058,Rishabh Kapoor,1,1,9,Lab Assistant,rishabh.kapoor30krmangalam.edu.in,8615377439,Male ,CSE,B,Training & Placement Coordinator
+1059,Sahil,1,1,17,Senior Lab Assistant,sahil80krmangalam.edu.in,8615377439,Male ,CSE,B,Project Coordinator
+1060,DevRaj,1,1,16,Assistant Professor,devraj89krmangalam.edu.in,8615377439,Male ,CSE,B,NAAC Coordinator
+1061,Nikhil Sharma,1,1,7,Professor,nikhil.sharma22krmangalam.edu.in,8615377439,Male ,CSE,B,NAAC Coordinator
+1062,Arbaz,1,1,11,Technical Assistant,arbaz39krmangalam.edu.in,8615377439,Male ,CSE,B,Training & Placement Coordinator
+1063,Nehal Kadiyan,1,1,4,Examination Coordinator,nehal.kadiyan42krmangalam.edu.in,8615377439,Male ,CSE,B,NAAC Coordinator
+1064,Ojasvita Mishra ,1,1,15,Professor,ojasvita.mishra.60krmangalam.edu.in,8615377439,Female,CSE,B,Discipline Coordinator
+1065,Pankaj Bhadana,1,1,3,Program Coordinator,pankaj.bhadana63krmangalam.edu.in,8615377439,Male ,CSE,B,Timetable Coordinator
+1066,Mohammad Arbazuddin ,1,1,11,Program Coordinator,mohammad.arbazuddin.18krmangalam.edu.in,8615377439,Male ,CSE,B,NAAC Coordinator
+1067,Kunal Roi,1,1,4,Assistant Professor,kunal.roi14krmangalam.edu.in,8615377439,Male ,CSE,B,Timetable Coordinator
+1068,Sahil,1,1,5,Assistant Professor,sahil12krmangalam.edu.in,8615377439,Male ,CSE,B,Timetable Coordinator
+1069,Arpit Kaur,1,1,7,Lab Assistant,arpit.kaur88krmangalam.edu.in,8615377439,Female,CSE,B,Timetable Coordinator
+1070,Mr. Abhishek Kumar Singh,1,1,17,Program Coordinator,mr..abhishek.kumar.singh89krmangalam.edu.in,8615377439,Male ,CSE,D,NAAC Coordinator
+1071,Mr. Ashutosh Dubey,1,1,19,Associate Professor,mr..ashutosh.dubey97krmangalam.edu.in,8615377439,Male ,CSE,B,Research Coordinator
+1072,Mr. Rajesh Kumar Gupta,1,1,4,Program Coordinator,mr..rajesh.kumar.gupta44krmangalam.edu.in,8615377439,Male ,CSE,B,NAAC Coordinator
+1073,Mr. Bhavesh Badani,1,1,14,Assistant Professor (Senior Scale),mr..bhavesh.badani48krmangalam.edu.in,8615377439,Male ,CSE,D,Discipline Coordinator
+1074,Mr. Nandan,1,1,6,Project Coordinator,mr..nandan65krmangalam.edu.in,8615377439,Male ,CSE,D,Training & Placement Coordinator
+1075,Mohd. Shadab,1,1,13,Project Coordinator,mohd..shadab79krmangalam.edu.in,8615377439,Male ,CSE,B,Research Coordinator
+1076,Mr. Devender,1,1,4,Senior Lab Assistant,mr..devender31krmangalam.edu.in,8615377439,Male ,CSE,B,Timetable Coordinator
+1077,Mr. SP Acharya,1,1,4,Program Coordinator,mr..sp.acharya29krmangalam.edu.in,8615377439,Male ,CSE,B,Research Coordinator
+1078,Mr. Pratik Raj Verma,1,1,20,Assistant Professor (Senior Scale),mr..pratik.raj.verma86krmangalam.edu.in,8615377439,Male ,CSE,B,Program Coordinator
+1079,Mr. Himanshu Kaushik,1,1,2,Professor,mr..himanshu.kaushik83krmangalam.edu.in,8615377439,Male ,CSE,B,Discipline Coordinator
+1080,Mr. Akash Tiwari,1,1,7,Lab Assistant,mr..akash.tiwari38krmangalam.edu.in,8615377439,Male ,CSE,B,Internship Coordinator
+1081,Mr. Suman Kumar Das,1,1,13,Technical Assistant,mr..suman.kumar.das89krmangalam.edu.in,8615377439,Male ,CSE,B,Project Coordinator
+1082,Dr. Vibha Thakur,1,1,20,Professor,dr..vibha.thakur80krmangalam.edu.in,8615377439,Male ,CSE,B,NAAC Coordinator
+1083,Mr. Shaquib Hasan,1,1,14,Lab Assistant,mr..shaquib.hasan73krmangalam.edu.in,8615377439,Male ,CSE,B,Research Coordinator
+1084,Ms. Vibha,1,1,18,Professor,ms..vibha92krmangalam.edu.in,8615377439,Male ,CSE,B,Timetable Coordinator
+1085,Mr. Love Porwal,1,1,17,Associate Professor,mr..love.porwal40krmangalam.edu.in,6152206534,Male ,CSE,B,Discipline Coordinator
+1086,Mr. Vishal,1,1,12,Lab Assistant,mr..vishal17krmangalam.edu.in,9050167508,Male ,CSE,B,Internship Coordinator
