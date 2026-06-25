@@ -1,0 +1,15 @@
+# Backend
+Server/node_modules/
+Server/.env
+Server/dist/
+
+# Frontend
+vite-project/node_modules/
+vite-project/dist/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

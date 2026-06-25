@@ -383,6 +383,10 @@ function Welcome() {
     const [showHelp, setShowHelp] = useState(false);
     const [hoveredCard, setHoveredCard] = useState(null);
 
+    // Role-based redirect: determine paths based on login state
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const role = localStorage.getItem("role");
+
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -443,7 +447,7 @@ function Welcome() {
             icon: <Bell size={18} />,
             label: "Problem Tracker",
             desc: "Report & track issues",
-            path: "/problemtrackers",
+            path: isLoggedIn && role === "student" ? "/student" : "/student-login",
             accent: "#f59e0b",
             glow: "rgba(245,158,11,0.3)",
             bg: "rgba(245,158,11,0.08)",
@@ -465,7 +469,7 @@ function Welcome() {
             icon: <LayoutDashboard size={18} />,
             label: "Admin Dashboard",
             desc: "Live stats & insights",
-            path: "/superadmindashboard",
+            path: isLoggedIn && role === "admin" ? "/admin" : "/admin-login",
             accent: "#10b981",
             glow: "rgba(16,185,129,0.3)",
             bg: "rgba(16,185,129,0.08)",
@@ -539,7 +543,7 @@ function Welcome() {
                     {/* Portal Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10">
                         <Link
-                            to="/student-login"
+                            to={isLoggedIn && role === "student" ? "/student" : "/student-login"}
                             className="group flex items-center justify-center gap-3 px-8 py-4 rounded-2xl
                                 text-white font-semibold text-lg shadow-2xl transition-all duration-300
                                 hover:scale-105 hover:shadow-blue-500/40 relative overflow-hidden"
@@ -556,7 +560,7 @@ function Welcome() {
                         </Link>
 
                         <Link
-                            to="/admin-login"
+                            to={isLoggedIn && role === "admin" ? "/admin" : "/admin-login"}
                             className="group flex items-center justify-center gap-3 px-8 py-4 rounded-2xl
                                 text-white font-semibold text-lg shadow-2xl transition-all duration-300
                                 hover:scale-105 hover:shadow-emerald-400/40 relative overflow-hidden"

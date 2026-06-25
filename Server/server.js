@@ -15,14 +15,13 @@ app.use("/api/problems", require("./routes/problemRoutes"));
 app.use("/api/students", require("./routes/studentRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/feedback", require("./routes/feedbackRoutes"));
-app.use("/api/users", require("./routes/userRoutes"));
 
 app.get("/", (req, res) => {
-    res.send("✅ COLA Backend is running!");
+    res.send("COLA Backend is running!");
 });
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`✅ Server running at http://localhost:${PORT}`);
+    console.log(`Server running at http://localhost:${PORT}`);
 });

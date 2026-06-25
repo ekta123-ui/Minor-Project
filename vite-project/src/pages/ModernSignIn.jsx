@@ -23,7 +23,7 @@ function StudentLogin() {
     if (!email || !password) { setError("Please enter email and password"); return; }
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/api/student/login", {
+      const response = await fetch("http://localhost:5000/api/students/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
@@ -66,7 +66,7 @@ function StudentLogin() {
       }
 
       // Send to backend — saves student + logs to admin dashboard
-      const res = await fetch("http://localhost:5000/api/student/microsoft-login", {
+      const res = await fetch("http://localhost:5000/api/students/microsoft-login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: userEmail, name: userName }),
