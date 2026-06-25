@@ -444,7 +444,7 @@ export default function COLADashboard() {
         const userEmail = localStorage.getItem("email");
         if (!userEmail) return;
 
-        fetch(`http://localhost:5000/api/problems/student-problems/${encodeURIComponent(userEmail)}`)
+        fetch(`https://minor-project-i5hl.onrender.com/api/problems/student-problems/${encodeURIComponent(userEmail)}`)
             .then(r => r.json())
             .then(data => {
                 if (Array.isArray(data)) {
@@ -484,7 +484,7 @@ export default function COLADashboard() {
     const [fbRoll, setFbRoll] = useState("");
 
     const fetchFeedbacks = useCallback(() => {
-        fetch("http://localhost:5000/api/feedback/all-feedback")
+        fetch("https://minor-project-i5hl.onrender.com/api/feedback/all-feedback")
             .then(res => res.json())
             .then(data => { if (Array.isArray(data)) setFeedbacks(data); })
             .catch(err => console.error(err));
@@ -519,7 +519,7 @@ export default function COLADashboard() {
         scroll();
 
         try {
-            const response = await fetch("http://localhost:5000/api/chat/ai", {
+            const response = await fetch("https://minor-project-i5hl.onrender.com/api/chat/ai", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -571,7 +571,7 @@ export default function COLADashboard() {
             const userEmail = localStorage.getItem("email"); // ✅ ADD THIS
             console.log("Submitting email:", userEmail); // debug
 
-            const response = await fetch("http://localhost:5000/api/problems/add-problem", {
+            const response = await fetch("https://minor-project-i5hl.onrender.com/api/problems/add-problem", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -619,7 +619,7 @@ export default function COLADashboard() {
         try {
             const userEmail = localStorage.getItem("email");
 
-            const response = await fetch("http://localhost:5000/api/feedback/add-feedback", {
+            const response = await fetch("https://minor-project-i5hl.onrender.com/api/feedback/add-feedback", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

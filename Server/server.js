@@ -6,6 +6,7 @@ const app = express();
 
 console.log("🚀 Starting server...");
 
+
 app.use(cors());
 app.use(express.json());
 
