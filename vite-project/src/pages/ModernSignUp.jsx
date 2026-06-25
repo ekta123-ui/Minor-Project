@@ -51,7 +51,7 @@ function ModernSignUp() {
       }
 
       // Send to backend
-      const res = await fetch("http://localhost:5000/api/students/microsoft-login", {
+      const res = await fetch("https://minor-project-i5hl.onrender.com/api/students/microsoft-login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: userEmail.toLowerCase(), name: userName }),
@@ -100,7 +100,7 @@ function ModernSignUp() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/students/register", {
+      const response = await fetch("https://minor-project-i5hl.onrender.com/api/students/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -16,7 +16,7 @@ function AdminLogin() {
     setLoading(true);
     try {
       // ✅ FIX 1: Correct endpoint — was /api/login, now /api/admin/login
-      const response = await fetch("http://localhost:5000/api/admin/login", {
+      const response = await fetch("https://minor-project-i5hl.onrender.com/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

@@ -1,4 +1,4 @@
-const BASE = "http://localhost:5000/api";
+const BASE = "https://minor-project-i5hl.onrender.com/api";
 
 const handleResponse = async (res) => {
     if (!res.ok) {

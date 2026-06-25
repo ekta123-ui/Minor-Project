@@ -215,7 +215,7 @@ export default function ProblemTracker() {
         if (!newText.trim()) { showToast("Please describe the problem first.", "error"); return; }
         setSubmitting(true);
         try {
-            await fetch("http://localhost:5000/api/add-problem", {
+            await fetch("https://minor-project-i5hl.onrender.com/api/add-problem", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ problemText: newText, studentEmail: STUDENT_EMAIL }),
