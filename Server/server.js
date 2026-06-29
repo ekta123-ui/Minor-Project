@@ -1,6 +1,9 @@
 require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
+
+const app = express(); // Create app first
 
 const allowedOrigins = [
     "http://localhost:5173",
@@ -15,19 +18,15 @@ app.use(cors({
             return callback(null, true);
         }
 
-        callback(new Error("Not allowed by CORS"));
+        return callback(new Error("Not allowed by CORS"));
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
 
-const app = express();
+app.use(express.json());
 
 console.log("🚀 Starting server...");
-
-
-app.use(cors());
-app.use(express.json());
 
 // Routes
 app.use("/api/chat", require("./routes/chatRoutes"));
