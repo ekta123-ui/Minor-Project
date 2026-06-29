@@ -26,3 +26,22 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+console.log("🚀 Starting server...");
+
+// Routes
+app.use("/api/chat", require("./routes/chatRoutes"));
+app.use("/api/problems", require("./routes/problemRoutes"));
+app.use("/api/students", require("./routes/studentRoutes"));
+app.use("/api/admin", require("./routes/adminRoutes"));
+app.use("/api/feedback", require("./routes/feedbackRoutes"));
+
+app.get("/", (req, res) => {
+    res.send("COLA Backend is running!");
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+});
