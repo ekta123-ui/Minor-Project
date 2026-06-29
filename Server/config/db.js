@@ -11,3 +11,11 @@ const pool = mysql2.createPool({
 });
 
 module.exports = pool.promise();
+pool.getConnection((err, connection) => {
+    if (err) {
+        console.error("❌ Database connection failed:", err);
+    } else {
+        console.log("✅ Connected to Railway MySQL");
+        connection.release();
+    }
+});
