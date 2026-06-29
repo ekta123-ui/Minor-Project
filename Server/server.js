@@ -7,8 +7,10 @@ const app = express(); // Create app first
 
 const allowedOrigins = [
     "http://localhost:5173",
+    "https://cola-university-portal.vercel.app",
     "https://cola-university-portal-h5rr25kj0-ektas-projects-bc826660.vercel.app"
 ];
+
 
 app.use(cors({
     origin: function (origin, callback) {
