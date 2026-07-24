@@ -23,7 +23,11 @@ function StudentLogin() {
     if (!email || !password) { setError("Please enter email and password"); return; }
     setLoading(true);
     try {
+<<<<<<< HEAD
       const response = await fetch("https://minor-project-i5hl.onrender.com/api/students/login", {
+=======
+      const response = await fetch("http://localhost:5000/api/students/login", {
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
@@ -66,7 +70,11 @@ function StudentLogin() {
       }
 
       // Send to backend — saves student + logs to admin dashboard
+<<<<<<< HEAD
       const res = await fetch("https://minor-project-i5hl.onrender.com/api/students/microsoft-login", {
+=======
+      const res = await fetch("http://localhost:5000/api/students/microsoft-login", {
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: userEmail, name: userName }),

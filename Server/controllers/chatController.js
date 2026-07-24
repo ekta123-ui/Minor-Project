@@ -45,10 +45,19 @@ const proxyAI = async (req, res) => {
 
     const UNKNOWN_QUERY_RESPONSE = "I am working on this. Your query has been noted for future improvements.";
 
+<<<<<<< HEAD
     try {
         // ── Run local COLA model first ──────────────────────────────────────
         const localAnswer = colaModel(query);
         const hasLocalAnswer = !localAnswer.startsWith("❓");
+=======
+    let localAnswer;
+    let hasLocalAnswer;
+    try {
+        // ── Run local COLA model first ──────────────────────────────────────
+        localAnswer = colaModel(query);
+        hasLocalAnswer = !localAnswer.startsWith("❓");
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
 
         // ── Build enhanced system prompt with local model result ────────────
         const enhancedSystem = `${systemPrompt || ""}

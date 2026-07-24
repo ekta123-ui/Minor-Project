@@ -25,6 +25,15 @@ app.use(cors({
     credentials: true,
 }));
 
+<<<<<<< HEAD
+=======
+app.use(cors({
+    origin: ["http://localhost:5173", "https://minor-project-gilt-kappa.vercel.app"],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
 app.use(express.json());
 
 console.log("🚀 Starting server...");
@@ -43,5 +52,9 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
+<<<<<<< HEAD
     console.log(`🚀 Server running on port ${PORT}`);
+=======
+    console.log(`Server running at http://localhost:${PORT}`);
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
 });

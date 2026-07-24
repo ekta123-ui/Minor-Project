@@ -444,7 +444,11 @@ export default function COLADashboard() {
         const userEmail = localStorage.getItem("email");
         if (!userEmail) return;
 
+<<<<<<< HEAD
         fetch(`https://minor-project-i5hl.onrender.com/api/problems/student-problems/${encodeURIComponent(userEmail)}`)
+=======
+        fetch(`http://localhost:5000/api/problems/student-problems/${encodeURIComponent(userEmail)}`)
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
             .then(r => r.json())
             .then(data => {
                 if (Array.isArray(data)) {
@@ -484,7 +488,11 @@ export default function COLADashboard() {
     const [fbRoll, setFbRoll] = useState("");
 
     const fetchFeedbacks = useCallback(() => {
+<<<<<<< HEAD
         fetch("https://minor-project-i5hl.onrender.com/api/feedback/all-feedback")
+=======
+        fetch("http://localhost:5000/api/feedback/all-feedback")
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
             .then(res => res.json())
             .then(data => { if (Array.isArray(data)) setFeedbacks(data); })
             .catch(err => console.error(err));
@@ -519,7 +527,11 @@ export default function COLADashboard() {
         scroll();
 
         try {
+<<<<<<< HEAD
             const response = await fetch("https://minor-project-i5hl.onrender.com/api/chat/ai", {
+=======
+            const response = await fetch("http://localhost:5000/api/chat/ai", {
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -571,7 +583,11 @@ export default function COLADashboard() {
             const userEmail = localStorage.getItem("email"); // ✅ ADD THIS
             console.log("Submitting email:", userEmail); // debug
 
+<<<<<<< HEAD
             const response = await fetch("https://minor-project-i5hl.onrender.com/api/problems/add-problem", {
+=======
+            const response = await fetch("http://localhost:5000/api/problems/add-problem", {
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -619,7 +635,11 @@ export default function COLADashboard() {
         try {
             const userEmail = localStorage.getItem("email");
 
+<<<<<<< HEAD
             const response = await fetch("https://minor-project-i5hl.onrender.com/api/feedback/add-feedback", {
+=======
+            const response = await fetch("http://localhost:5000/api/feedback/add-feedback", {
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -632,7 +652,15 @@ export default function COLADashboard() {
                 }),
             });
 
+<<<<<<< HEAD
             if (!response.ok) throw new Error("Failed");
+=======
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || data.error || "Failed to submit feedback");
+            }
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
 
             setFbText("");
             setFbRating(0);

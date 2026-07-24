@@ -12,10 +12,23 @@ const submitFeedback = async (req, res) => {
 
     try {
         const result = await addFeedback(studentEmail, feedbackText, Number(rating));
+<<<<<<< HEAD
         res.json({ id: result.insertId, message: "Feedback submitted." });
     } catch (err) {
         console.error("Submit Feedback Error:", err);
         res.status(500).json({ error: err.message });
+=======
+        res.status(201).json({ success: true, id: result.insertId, message: "Feedback submitted successfully" });
+    } catch (error) {
+        console.error("Add Feedback Error:", {
+            code: error.code,
+            message: error.message
+        });
+        return res.status(500).json({
+            success: false,
+            message: "Failed to submit feedback"
+        });
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
     }
 };
 

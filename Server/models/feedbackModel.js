@@ -10,7 +10,11 @@ const addFeedback = async (studentEmail, feedbackText, rating, category) => {
 
 const getAllFeedback = async () => {
     const [rows] = await db.query(
+<<<<<<< HEAD
         "SELECT * FROM feedback ORDER BY id DESC"
+=======
+        "SELECT id, feedbackText, rating, studentEmail, created_at AS createdAt FROM feedback ORDER BY id DESC"
+>>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
     );
     return rows;
 };
