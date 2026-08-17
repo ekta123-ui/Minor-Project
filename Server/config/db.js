@@ -1,53 +1,56 @@
-<<<<<<< HEAD
-const mysql2 = require("mysql2");
-
-const pool = mysql2.createPool({
-    host:     process.env.DB_HOST     || "127.0.0.1",
-    port:     parseInt(process.env.DB_PORT) || 3307,
-    user:     process.env.DB_USER     || "root",
-    password: process.env.DB_PASSWORD || "",
-    database: process.env.DB_NAME     || "cola",
-    waitForConnections: true,
-    connectionLimit:    10,
-});
-
-module.exports = pool.promise();
-pool.getConnection((err, connection) => {
-    if (err) {
-        console.error("❌ Database connection failed:", err);
-    } else {
-        console.log("✅ Connected to Railway MySQL");
-        connection.release();
-    }
-});
-=======
 require("dotenv").config();
-const mysql2 = require("mysql2");
+const { Pool } = require("pg");
 
-if (!process.env.MYSQL_PUBLIC_URL) {
-    console.error("❌ MYSQL_PUBLIC_URL is missing from .env");
-    process.exit(1);
-}
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false },
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 10000,
+    keepAlive: true
+});
 
-const pool = mysql2.createPool(process.env.MYSQL_PUBLIC_URL);
+pool.on("error", (error) => {
+    console.error("Unexpected database idle client error:", error.code || error.message);
+});
 
-const promisePool = pool.promise();
-
-// Safe database connection test
+// Safe connection test
 async function testDatabaseConnection() {
     try {
-        const connection = await promisePool.getConnection();
-        console.log("✅ Railway MySQL connected successfully");
-        connection.release();
+        const client = await pool.connect();
+        console.log("✅ Connected to Supabase PostgreSQL");
+        client.release();
     } catch (error) {
-        console.error(
-            "❌ Railway MySQL connection failed:",
-            error.code || error.message
-        );
+        console.error("❌ Database connection failed:", error.code || error.message);
+        console.error("   → Common causes:");
+        console.error("   → 1. Wrong DATABASE_URL in .env");
+        console.error("   → 2. Supabase project is paused");
     }
 }
 
 testDatabaseConnection();
 
+// Create a wrapper to mimic mysql2's `.promise().query()` return format
+// and translate `?` parameters to `$1, $2` etc.
+const promisePool = {
+    query: async (sql, params = []) => {
+        let count = 1;
+        // Replace `?` with `$1, $2, ...`
+        const pgSql = sql.replace(/\?/g, () => `$${count++}`);
+        
+        const result = await pool.query(pgSql, params);
+        
+        // Match the `[rows]` or `[result]` array format expected by the models
+        if (['INSERT', 'UPDATE', 'DELETE'].includes(result.command)) {
+            // For insert/update/delete, we return a mock result object
+            return [{ 
+                insertId: result.rows.length > 0 ? result.rows[0].id : null,
+                affectedRows: result.rowCount
+            }];
+        }
+        
+        return [result.rows];
+    }
+};
+
 module.exports = promisePool;
->>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)

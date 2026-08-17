@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../auth/msalConfig";
+import { API_ROOT } from "../config/api";
 
 const ALLOWED_DOMAIN = "krmu.edu.in";
 
@@ -23,11 +24,7 @@ function StudentLogin() {
     if (!email || !password) { setError("Please enter email and password"); return; }
     setLoading(true);
     try {
-<<<<<<< HEAD
-      const response = await fetch("https://minor-project-i5hl.onrender.com/api/students/login", {
-=======
-      const response = await fetch("http://localhost:5000/api/students/login", {
->>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
+      const response = await fetch(`${API_ROOT}/students/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
@@ -70,11 +67,7 @@ function StudentLogin() {
       }
 
       // Send to backend — saves student + logs to admin dashboard
-<<<<<<< HEAD
-      const res = await fetch("https://minor-project-i5hl.onrender.com/api/students/microsoft-login", {
-=======
-      const res = await fetch("http://localhost:5000/api/students/microsoft-login", {
->>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
+      const res = await fetch(`${API_ROOT}/students/microsoft-login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: userEmail, name: userName }),

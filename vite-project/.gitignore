@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -22,3 +23,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+=======
+# Backend
+Server/node_modules/
+Server/.env
+Server/dist/
+
+# Frontend
+vite-project/node_modules/
+vite-project/dist/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+>>>>>>> 3de6ee8f6fb4fbbcd398a7533602aac50697b477

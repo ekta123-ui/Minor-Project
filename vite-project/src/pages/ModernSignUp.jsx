@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../auth/msalConfig";
 import { Eye, EyeOff } from "lucide-react";
+import { API_ROOT } from "../config/api";
 
 const ALLOWED_DOMAIN = "krmu.edu.in";
 
@@ -51,7 +52,7 @@ function ModernSignUp() {
       }
 
       // Send to backend
-      const res = await fetch("https://minor-project-i5hl.onrender.com/api/students/microsoft-login", {
+      const res = await fetch(`${API_ROOT}/students/microsoft-login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: userEmail.toLowerCase(), name: userName }),
@@ -100,7 +101,7 @@ function ModernSignUp() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://minor-project-i5hl.onrender.com/api/students/register", {
+      const response = await fetch(`${API_ROOT}/students/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -305,7 +306,7 @@ function ModernSignUp() {
         {/* LEFT */}
         <div className="su-left">
           <img
-            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900"
+            src="https://picsum.photos/1200/900?blur=1"
             alt=""
             className="su-left-img"
           />

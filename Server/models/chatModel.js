@@ -1,15 +1,7 @@
 const db = require("../config/db");
 const { getStudentByEmail } = require("./studentModel");
 
-<<<<<<< HEAD
-const saveChatLog = (studentId, query, response, isUnknown = false) =>
-    db.query("INSERT INTO chat_logs (studentId, query, response, is_unknown) VALUES (?, ?, ?, ?)", [
-        studentId,
-        query,
-        response,
-        isUnknown,
-    ]);
-=======
+// Save a chat log — accepts either a student email or null
 const saveChatLog = async (email, query, response, isUnknown = false) => {
     try {
         let studentId = null;
@@ -20,7 +12,7 @@ const saveChatLog = async (email, query, response, isUnknown = false) => {
             }
         }
         const [result] = await db.query(
-            "INSERT INTO chat_logs (student_id, user_query, bot_response) VALUES (?, ?, ?)",
+            "INSERT INTO chat_logs (student_id, user_query, bot_response) VALUES (?, ?, ?) RETURNING chat_id",
             [studentId, query, response]
         );
         return result;
@@ -29,8 +21,8 @@ const saveChatLog = async (email, query, response, isUnknown = false) => {
         return null;
     }
 };
->>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
 
+// Get chat history for a student by email
 const getChatHistory = async (email) => {
     let studentId = null;
     if (email) {
@@ -40,11 +32,7 @@ const getChatHistory = async (email) => {
         }
     }
     const [rows] = await db.query(
-<<<<<<< HEAD
-        "SELECT * FROM chat_logs WHERE studentId = ? ORDER BY timestamp DESC",
-=======
         "SELECT chat_id AS chatId, student_id AS studentId, user_query AS query, bot_response AS response, timestamp_ AS timestamp FROM chat_logs WHERE student_id = ? ORDER BY timestamp_ DESC",
->>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
         [studentId]
     );
     return rows;

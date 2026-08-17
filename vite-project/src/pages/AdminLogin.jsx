@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Eye, EyeOff, ShieldCheck } from "lucide-react";
+import { API_ROOT } from "../config/api";
 
 function AdminLogin() {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,7 +17,7 @@ function AdminLogin() {
     setLoading(true);
     try {
       // ✅ FIX 1: Correct endpoint — was /api/login, now /api/admin/login
-      const response = await fetch("https://minor-project-i5hl.onrender.com/api/admin/login", {
+      const response = await fetch(`${API_ROOT}/admin/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

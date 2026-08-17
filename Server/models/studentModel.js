@@ -9,7 +9,7 @@ const getStudentByEmail = async (email) => {
 // Create new student
 const createStudent = async (firstName, lastName, email, hashedPassword) => {
     const [result] = await db.query(
-        "INSERT INTO students (firstName, lastName, email, password, auth_provider) VALUES (?, ?, ?, ?, 'local')",
+        "INSERT INTO students (firstName, lastName, email, password, auth_provider) VALUES (?, ?, ?, ?, 'local') RETURNING id",
         [firstName, lastName, email, hashedPassword]
     );
     return result;
@@ -41,7 +41,7 @@ const upsertMicrosoftStudent = async (name, email) => {
         const displayName = name || email.split("@")[0];
 
         const [result] = await db.query(
-            "INSERT INTO students (name, email, password, auth_provider) VALUES (?, ?, NULL, 'microsoft')",
+            "INSERT INTO students (name, email, password, auth_provider) VALUES (?, ?, NULL, 'microsoft') RETURNING id",
             [displayName, email]
         );
 
@@ -64,9 +64,10 @@ const logStudentActivity = async (name, email, status) => {
 // Add to dashboard
 const addToDashboard = async (name, email) => {
     await db.query(
-        `INSERT IGNORE INTO admin_dashboard_students 
+        `INSERT INTO admin_dashboard_students 
         (name, email, auth_provider, roll_number, joined_at)
-        VALUES (?, ?, 'microsoft', ?, NOW())`,
+        VALUES (?, ?, 'microsoft', ?, NOW())
+        ON CONFLICT (email) DO NOTHING`,
         [name, email, email.split("@")[0]]
     );
 };

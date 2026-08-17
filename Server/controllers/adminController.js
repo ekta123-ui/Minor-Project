@@ -7,6 +7,14 @@ const {
     getMicrosoftStudents,
 } = require("../models/adminModel");
 
+const safeLogAdminLogin = async (name, email) => {
+    try {
+        await logAdminLogin(name, email);
+    } catch (err) {
+        console.error("Non-fatal admin login log error:", err.message);
+    }
+};
+
 // POST /admin/register
 const registerAdmin = async (req, res) => {
     const { name, email, password } = req.body;
@@ -38,10 +46,10 @@ const loginAdmin = async (req, res) => {
         if (!match)
             return res.status(401).json({ error: "Invalid email or password." });
 
-        await logAdminLogin(rows[0].name, rows[0].email);
+        await safeLogAdminLogin(rows[0].name, rows[0].email);
         res.json({
             message: "Login successful",
-            admin: { id: rows[0].id, name: rows[0].name, email: rows[0].email },
+            admin: { id: rows[0].admin_id, name: rows[0].name, email: rows[0].email },
         });
     } catch (err) {
         res.status(500).json({ error: err.message });

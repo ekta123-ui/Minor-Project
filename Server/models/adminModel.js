@@ -9,7 +9,7 @@ const getAdminByEmail = async (email) => {
 // Create new admin
 const createAdmin = async (name, email, hashedPassword) => {
     const [result] = await db.query(
-        "INSERT INTO admins (name, email, password) VALUES (?, ?, ?)",
+        "INSERT INTO admins (name, email, password) VALUES (?, ?, ?) RETURNING admin_id",
         [name, email, hashedPassword]
     );
     return result;
@@ -18,7 +18,7 @@ const createAdmin = async (name, email, hashedPassword) => {
 // Log admin login
 const logAdminLogin = async (name, email) => {
     await db.query(
-        "INSERT INTO admin_logins (name, email) VALUES (?, ?)",
+        "INSERT INTO admin_logins (name, email) VALUES (?, ?) RETURNING id",
         [name, email]
     );
 };

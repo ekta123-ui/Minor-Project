@@ -1,61 +1,66 @@
+const bcrypt = require("bcryptjs");
 const { createUser, getUserByEmail } = require("../models/userModel");
 
-
-// 🔹 REGISTER FUNCTION
-const registerUser = (req, res) => {
+// POST /api/users/register
+const registerUser = async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
 
-    const role = "student";
+    if (!firstName || !lastName || !email || !password)
+        return res.status(400).json({ message: "firstName, lastName, email and password are required." });
 
-    createUser(firstName, lastName, email, password, role, (err, result) => {
+    try {
+        const existing = await getUserByEmail(email.trim().toLowerCase());
+        if (existing.length > 0)
+            return res.status(409).json({ message: "Email already exists." });
 
-        if (err) {
-            console.log("REGISTER ERROR:", err);
-
-            if (err.code === "ER_DUP_ENTRY") {
-                return res.status(400).json({ message: "Email already exists" });
-            }
-
-            return res.status(500).json({ message: "Database error" });
-        }
+        const hashed = await bcrypt.hash(password, 10);
+        const result = await createUser(firstName, lastName, email.trim().toLowerCase(), hashed, "student");
 
         res.status(200).json({
             message: "Account created successfully",
-            role: role
+            role: "student",
+            id: result.insertId
         });
-    });
+    } catch (err) {
+        console.error("REGISTER ERROR:", err);
+        if (err.code === "ER_DUP_ENTRY")
+            return res.status(409).json({ message: "Email already exists." });
+        res.status(500).json({ message: "Database error", error: err.message });
+    }
 };
 
-
-// 🔹 LOGIN FUNCTION
-const loginUser = (req, res) => {
+// POST /api/users/login
+const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
-    getUserByEmail(email, (err, results) => {
+    if (!email || !password)
+        return res.status(400).json({ message: "email and password are required." });
 
-        if (err) {
-            return res.status(500).json({ message: "Server error" });
-        }
+    try {
+        const results = await getUserByEmail(email.trim().toLowerCase());
 
-        if (results.length === 0) {
-            return res.status(400).json({ message: "User not found" });
-        }
+        if (results.length === 0)
+            return res.status(400).json({ message: "User not found." });
 
         const user = results[0];
 
-        if (user.password !== password) {
-            return res.status(400).json({ message: "Wrong password" });
-        }
+        if (!user.password)
+            return res.status(401).json({ message: "No password set. Please register properly." });
 
-        // ✅ Send role to frontend
+        const match = await bcrypt.compare(password, user.password);
+        if (!match)
+            return res.status(400).json({ message: "Wrong password." });
+
         res.status(200).json({
             message: "Login successful",
-            role: user.role
+            role: user.role || "student",
+            id: user.id,
+            email: user.email
         });
-    });
+    } catch (err) {
+        console.error("LOGIN ERROR:", err);
+        res.status(500).json({ message: "Server error", error: err.message });
+    }
 };
 
-// ✅ VERY IMPORTANT — ADD THIS AT THE BOTTOM
 module.exports = { registerUser, loginUser };
-
-

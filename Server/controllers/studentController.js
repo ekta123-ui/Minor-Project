@@ -10,6 +10,22 @@ const {
 
 const ALLOWED_DOMAIN = "krmu.edu.in";
 
+const safeLogStudentActivity = async (name, email, status) => {
+    try {
+        await logStudentActivity(name, email, status);
+    } catch (err) {
+        console.error("Non-fatal student activity log error:", err.message);
+    }
+};
+
+const safeAddToDashboard = async (name, email) => {
+    try {
+        await addToDashboard(name, email);
+    } catch (err) {
+        console.error("Non-fatal dashboard sync error:", err.message);
+    }
+};
+
 // POST /api/students/register
 const registerStudent = async (req, res) => {
     console.log("REGISTER BODY:", req.body);
@@ -35,7 +51,7 @@ const registerStudent = async (req, res) => {
 
         const displayName = `${firstName.trim()} ${lastName.trim()}`;
 
-        await logStudentActivity(displayName, email.trim().toLowerCase(), "register");
+        await safeLogStudentActivity(displayName, email.trim().toLowerCase(), "register");
 
         res.json({
             message: "Student registered successfully.",
@@ -87,7 +103,7 @@ const loginStudent = async (req, res) => {
             `${student.firstName || ""} ${student.lastName || ""}`.trim() ||
             email.split("@")[0];
 
-        await logStudentActivity(displayName, student.email, "login");
+        await safeLogStudentActivity(displayName, student.email, "login");
 
         res.json({
             message: "Login successful.",
@@ -120,8 +136,8 @@ const microsoftLogin = async (req, res) => {
 
     try {
         const student = await upsertMicrosoftStudent(name, email.toLowerCase());
-        await logStudentActivity(student.name, student.email, "login");
-        await addToDashboard(student.name, student.email);
+        await safeLogStudentActivity(student.name, student.email, "login");
+        await safeAddToDashboard(student.name, student.email);
 
         res.json({
             message: "Microsoft login successful.",
@@ -143,7 +159,7 @@ const logoutStudent = async (req, res) => {
     const { name, email } = req.body;
 
     try {
-        await logStudentActivity(name, email, "logout");
+        await safeLogStudentActivity(name, email, "logout");
         res.json({ message: "Logout recorded." });
     } catch (err) {
         res.status(500).json({ error: err.message });

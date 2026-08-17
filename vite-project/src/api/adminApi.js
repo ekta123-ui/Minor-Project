@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-const BASE = "https://minor-project-i5hl.onrender.com/api";
-=======
-const BASE = "http://localhost:5000/api";
->>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
+import { API_ROOT } from "../config/api";
+
+const BASE = API_ROOT;
 
 const handleResponse = async (res) => {
     if (!res.ok) {

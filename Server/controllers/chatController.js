@@ -2,7 +2,15 @@
 const { saveChatLog, getChatHistory } = require("../models/chatModel");
 const { colaModel } = require("../services/colaModelService");
 
-// POST /api/chat  — existing chatbot
+const trySaveChatLog = async (...args) => {
+    try {
+        await saveChatLog(...args);
+    } catch (err) {
+        console.error("Non-fatal chat log error:", err.message);
+    }
+};
+
+// POST /api/chat  — local COLA chatbot only
 const handleChat = async (req, res) => {
     const { query, studentId } = req.body;
 
@@ -16,7 +24,7 @@ const handleChat = async (req, res) => {
         const isUnknownLocal = botResponse.startsWith("❓");
         const finalBotResponse = isUnknownLocal ? UNKNOWN_QUERY_RESPONSE : botResponse;
 
-        await saveChatLog(studentId || null, query, finalBotResponse, isUnknownLocal);
+        await trySaveChatLog(studentId || null, query, finalBotResponse, isUnknownLocal);
 
         res.json({
             content: [{ type: "text", text: finalBotResponse }]
@@ -45,19 +53,14 @@ const proxyAI = async (req, res) => {
 
     const UNKNOWN_QUERY_RESPONSE = "I am working on this. Your query has been noted for future improvements.";
 
-<<<<<<< HEAD
-    try {
-        // ── Run local COLA model first ──────────────────────────────────────
-        const localAnswer = colaModel(query);
-        const hasLocalAnswer = !localAnswer.startsWith("❓");
-=======
+    // Declare outside try so they're accessible in catch
     let localAnswer;
     let hasLocalAnswer;
+
     try {
         // ── Run local COLA model first ──────────────────────────────────────
         localAnswer = colaModel(query);
         hasLocalAnswer = !localAnswer.startsWith("❓");
->>>>>>> 4d85c75 (Fix COLA backend APIs and update dashboards)
 
         // ── Build enhanced system prompt with local model result ────────────
         const enhancedSystem = `${systemPrompt || ""}
@@ -87,56 +90,47 @@ If the local model returned ❓, use your training data to answer.`;
 
         let finalResponse;
         if (!response.ok) {
-            const err = await response.json().catch(() => ({}));
-            // If Anthropic fails:
+            // If Anthropic fails and local model has an answer, use that
             if (hasLocalAnswer) {
-                // Fallback to local model answer if available
-                await saveChatLog(studentId || null, query, localAnswer);
+                await trySaveChatLog(studentId || null, query, localAnswer);
                 return res.json({
                     content: [{ type: "text", text: localAnswer }],
                     source: "local_model",
                 });
             }
-            // If Anthropic fails AND local model has no answer, log as unknown
-            await saveChatLog(studentId || null, query, UNKNOWN_QUERY_RESPONSE, true);
-            return res.status(200).json({ // Return 200 OK with a friendly message
+            // Anthropic failed AND local model has no answer → log as unknown
+            await trySaveChatLog(studentId || null, query, UNKNOWN_QUERY_RESPONSE, true);
+            return res.status(200).json({
                 content: [{ type: "text", text: UNKNOWN_QUERY_RESPONSE }],
                 source: "unknown_query_fallback",
             });
         }
 
         const data = await response.json();
-        
-        // Log successful AI response to DB
+
         const aiText = data.content?.[0]?.text || UNKNOWN_QUERY_RESPONSE;
-        // If local model had no answer, and Anthropic also gave a generic/empty response, mark as unknown
         const isUnknown = !hasLocalAnswer && aiText === UNKNOWN_QUERY_RESPONSE;
-        await saveChatLog(studentId || null, query, aiText, isUnknown);
+        await trySaveChatLog(studentId || null, query, aiText, isUnknown);
 
         res.json(data);
 
     } catch (err) {
         console.error("proxyAI error:", err);
 
-        // If Anthropic is unreachable AND local model has no answer, log as unknown
+        // Network error: if local model also has no answer, log as unknown
         if (!hasLocalAnswer) {
-            await saveChatLog(studentId || null, query, UNKNOWN_QUERY_RESPONSE, true);
+            await trySaveChatLog(studentId || null, query, UNKNOWN_QUERY_RESPONSE, true);
             return res.status(200).json({
                 content: [{ type: "text", text: UNKNOWN_QUERY_RESPONSE }],
                 source: "network_error_unknown_query_fallback",
             });
         }
 
-        // Fallback to local model if Anthropic is unreachable
-        const localAnswer = colaModel(query);
-        if (!localAnswer.startsWith("❓")) {
-            return res.json({
-                content: [{ type: "text", text: `${localAnswer}\n\n_(AI offline — showing local database result)_` }],
-                source: "local_model_fallback",
-            });
-        }
-
-        res.status(500).json({ error: "An unexpected server error occurred." });
+        // Fallback to local model
+        return res.json({
+            content: [{ type: "text", text: `${localAnswer}\n\n_(AI offline — showing local database result)_` }],
+            source: "local_model_fallback",
+        });
     }
 };
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../auth/msalConfig";
+import { API_ROOT } from "../config/api";
 
 const ALLOWED_DOMAIN = "krmu.edu.in";
 
@@ -26,7 +27,7 @@ function StudentLogin() {
     }
     setLoading(true);
     try {
-      const response = await fetch("https://minor-project-i5hl.onrender.com/api/students/login", {
+      const response = await fetch(`${API_ROOT}/students/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim().toLowerCase(), password })
@@ -81,7 +82,7 @@ function StudentLogin() {
       }
 
       // Send to backend
-      const res = await fetch("https://minor-project-i5hl.onrender.com/api/students/microsoft-login", {
+      const res = await fetch(`${API_ROOT}/students/microsoft-login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: userEmail.toLowerCase(), name: userName }),
