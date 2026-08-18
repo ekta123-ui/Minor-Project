@@ -1,6 +1,22 @@
-<<<<<<< HEAD
+# Dependencies
+node_modules/
+Server/node_modules/
+vite-project/node_modules/
+
+# Build files
+dist/
+dist-ssr/
+Server/dist/
+vite-project/dist/
+
+# Environment files
+.env
+.env.*
+!.env.example
+Server/.env
+
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -8,35 +24,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
+# Editor
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Other
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-=======
-# Backend
-Server/node_modules/
-Server/.env
-Server/dist/
-
-# Frontend
-vite-project/node_modules/
-vite-project/dist/
-
-# Logs
-*.log
-
-# OS files
-.DS_Store
-Thumbs.db
->>>>>>> 3de6ee8f6fb4fbbcd398a7533602aac50697b477

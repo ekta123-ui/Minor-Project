@@ -1,11 +1,19 @@
 # Backend
+node_modules/
 Server/node_modules/
 Server/.env
 Server/dist/
+Server/model/__pycache__/
+Server/cola.db
 
 # Frontend
 vite-project/node_modules/
 vite-project/dist/
+dist/
+
+# Accidental nested project copies
+vite-project/Server/
+vite-project/vite-project/
 
 # Environment files
 .env
